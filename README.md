@@ -87,9 +87,17 @@ O projeto segue uma organização voltada para fácil manutenção e escalabilid
 
 ## 🗄️ **Criação do Banco de Dados**
 
-Para executar o sistema, é necessário criar o banco de dados no **SQL Server**. Inicialmente, crie um banco com o nome `pizzafood`. Em seguida, utilize os scripts fornecidos na pasta `DDL.SQL` do projeto para criar as tabelas e os relacionamentos, e na pasta `Triggers.sql` tem uma Trigger para controle de disponibilidade de estoque e para inserir dados usar os insert's que se encontra na pasta `DML.SQL`. 
+Para executar o sistema, é necessário criar o banco de dados no **SQL Server**. Inicialmente, crie um banco com o nome `pizzafood`. Em seguida, utilize os scripts fornecidos no projeto:  
+
+- **`DDL.sql`** – cria as tabelas e define os relacionamentos.  
+- **`Triggers.sql`** – contém triggers para controle de disponibilidade de estoque.  
+- **`DML.sql`** – insere os dados iniciais no banco, como pizzas, bebidas e usuários.  
+
+Certifique-se de executar os scripts na ordem indicada para garantir a integridade do banco de dados. Após a criação e a inserção dos dados, configure corretamente a **string de conexão** no arquivo `Web.config` da aplicação para que o sistema possa se conectar ao banco de dados.
+
 
 <p align="center">
   <strong>Desenvolvido por aluno do 4º Período de TADS.</strong>
 </p>
+
 
