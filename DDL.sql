@@ -1,0 +1,69 @@
+--DDL
+--Criação da DATABASE
+CREATE DATABASE pizzafood
+GO
+USE pizzafood
+GO
+--Script de Criação das Tabelas do Banco de Dados
+-- CATEGORIAS
+CREATE TABLE dbo.Categorias (
+IdCategoria INT IDENTITY(1,1) NOT NULL,
+NomeCategoria VARCHAR(50) NOT NULL,
+CONSTRAINT PK_Categorias PRIMARY KEY (IdCategoria)
+);
+GO
+-- USUARIO
+CREATE TABLE dbo.Usuario (
+IdUsuario INT IDENTITY(1,1) NOT NULL,
+NomeUsuario VARCHAR(100) NOT NULL,
+Login VARCHAR(100) NOT NULL,
+Senha VARCHAR(260) NOT NULL,
+DataCadastro DATETIME NOT NULL,
+DataUltimoAcesso DATETIME NULL,
+Email VARCHAR(100) NOT NULL,
+Perfil BIT NOT NULL DEFAULT 0,
+Status BIT NOT NULL DEFAULT 0,
+CONSTRAINT PK_Usuario PRIMARY KEY (IdUsuario)
+);
+GO
+-- PEDIDOS
+CREATE TABLE dbo.Pedidos (
+Id INT IDENTITY(1,1) NOT NULL,
+IdUsuario INT NOT NULL,
+DataPedido DATETIME NOT NULL DEFAULT GETDATE(),
+Status VARCHAR(30) NOT NULL DEFAULT 'Pendente',
+ValorTotal DECIMAL(10,2) NOT NULL DEFAULT 0,
+CONSTRAINT PK_Pedidos PRIMARY KEY (Id),
+CONSTRAINT FK_Pedidos_Usuario FOREIGN KEY (IdUsuario)
+REFERENCES dbo.Usuario(IdUsuario)
+);
+GO
+-- PRODUTOS
+CREATE TABLE dbo.Produtos (
+Id INT IDENTITY(1,1) NOT NULL,
+Nome VARCHAR(100) NOT NULL,
+Preco DECIMAL(10,2) NOT NULL,
+Descricao VARCHAR(255) NULL,
+Imagem VARCHAR(255) NULL,
+DataCadastro DATETIME NOT NULL DEFAULT GETDATE(),
+Estoque INT NOT NULL,
+Disponibilidade VARCHAR(100) NULL,
+CategoriaId INT NULL,
+CONSTRAINT PK_Produtos PRIMARY KEY (Id),
+CONSTRAINT FK_Produtos_Categorias FOREIGN KEY (CategoriaId)
+REFERENCES dbo.Categorias(IdCategoria)
+);
+GO
+-- ITENS DO PEDIDO
+CREATE TABLE dbo.ItensPedido (
+Id INT IDENTITY(1,1) NOT NULL,
+IdPedido INT NOT NULL,
+IdProduto INT NOT NULL,
+Quantidade INT NOT NULL DEFAULT 1,
+PrecoUnitario DECIMAL(10,2) NOT NULL DEFAULT 0,
+CONSTRAINT PK_ItensPedido PRIMARY KEY (Id),
+CONSTRAINT FK_ItensPedido_Pedidos FOREIGN KEY (IdPedido)
+REFERENCES dbo.Pedidos(Id) ON DELETE CASCADE,
+CONSTRAINT FK_ItensPedido_Produtos FOREIGN KEY (IdProduto)
+REFERENCES dbo.Produtos(Id)
+);
