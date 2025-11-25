@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pizzafoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="pizzafoodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="pizzafoodModel.Categorias" />
+    <EntitySet Name="ItensPedido" EntityType="pizzafoodModel.ItensPedido" />
+    <EntitySet Name="Pedidos" EntityType="pizzafoodModel.Pedidos" />
+    <EntitySet Name="Produtos" EntityType="pizzafoodModel.Produtos" />
+    <EntitySet Name="Usuario" EntityType="pizzafoodModel.Usuario" />
+    <AssociationSet Name="FK_Produtos_Categorias" Association="pizzafoodModel.FK_Produtos_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Produtos" EntitySet="Produtos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItensPedi__IdPed__267ABA7A" Association="pizzafoodModel.FK__ItensPedi__IdPed__267ABA7A">
+      <End Role="Pedidos" EntitySet="Pedidos" />
+      <End Role="ItensPedido" EntitySet="ItensPedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItensPedi__IdPro__276EDEB3" Association="pizzafoodModel.FK__ItensPedi__IdPro__276EDEB3">
+      <End Role="Produtos" EntitySet="Produtos" />
+      <End Role="ItensPedido" EntitySet="ItensPedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedidos_Usuario" Association="pizzafoodModel.FK_Pedidos_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Pedidos" EntitySet="Pedidos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produtos" Relationship="pizzafoodModel.FK_Produtos_Categorias" FromRole="Categorias" ToRole="Produtos" />
+  </EntityType>
+  <EntityType Name="ItensPedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPedido" Type="Int32" Nullable="false" />
+    <Property Name="IdProduto" Type="Int32" Nullable="false" />
+    <Property Name="Quantidade" Type="Int32" Nullable="false" />
+    <Property Name="PrecoUnitario" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <NavigationProperty Name="Pedidos" Relationship="pizzafoodModel.FK__ItensPedi__IdPed__267ABA7A" FromRole="ItensPedido" ToRole="Pedidos" />
+    <NavigationProperty Name="Produtos" Relationship="pizzafoodModel.FK__ItensPedi__IdPro__276EDEB3" FromRole="ItensPedido" ToRole="Produtos" />
+  </EntityType>
+  <EntityType Name="Pedidos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="DataPedido" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ValorTotal" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <NavigationProperty Name="ItensPedido" Relationship="pizzafoodModel.FK__ItensPedi__IdPed__267ABA7A" FromRole="Pedidos" ToRole="ItensPedido" />
+    <NavigationProperty Name="Usuario" Relationship="pizzafoodModel.FK_Pedidos_Usuario" FromRole="Pedidos" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Produtos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Preco" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Imagem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DataCadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estoque" Type="Int32" Nullable="false" />
+    <Property Name="Disponibilidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CategoriaId" Type="Int32" />
+    <NavigationProperty Name="Categorias" Relationship="pizzafoodModel.FK_Produtos_Categorias" FromRole="Produtos" ToRole="Categorias" />
+    <NavigationProperty Name="ItensPedido" Relationship="pizzafoodModel.FK__ItensPedi__IdPro__276EDEB3" FromRole="Produtos" ToRole="ItensPedido" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeUsuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="260" FixedLength="false" Unicode="false" />
+    <Property Name="DataCadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataUltimoAcesso" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Perfil" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Pedidos" Relationship="pizzafoodModel.FK_Pedidos_Usuario" FromRole="Usuario" ToRole="Pedidos" />
+  </EntityType>
+  <Association Name="FK_Produtos_Categorias">
+    <End Type="pizzafoodModel.Categorias" Role="Categorias" Multiplicity="0..1" />
+    <End Type="pizzafoodModel.Produtos" Role="Produtos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Produtos">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItensPedi__IdPed__267ABA7A">
+    <End Type="pizzafoodModel.Pedidos" Role="Pedidos" Multiplicity="1" />
+    <End Type="pizzafoodModel.ItensPedido" Role="ItensPedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedidos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItensPedido">
+        <PropertyRef Name="IdPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItensPedi__IdPro__276EDEB3">
+    <End Type="pizzafoodModel.Produtos" Role="Produtos" Multiplicity="1" />
+    <End Type="pizzafoodModel.ItensPedido" Role="ItensPedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produtos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItensPedido">
+        <PropertyRef Name="IdProduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedidos_Usuario">
+    <End Type="pizzafoodModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="pizzafoodModel.Pedidos" Role="Pedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Pedidos">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

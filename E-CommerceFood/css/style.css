@@ -1,0 +1,283 @@
+.btn-container {
+    display: flex;
+    gap: 10px; /* espaço entre os botões */
+    margin-top: 20px; /* espaço acima dos botões */
+}
+
+#btnCadastrar,
+#btnLimpar,
+#btnAddProduto{
+    font-weight: bold;
+}
+
+
+.frm-cadastro label {
+    font-weight: bold;
+}
+
+#carouselExampleCaptions .carousel-item img {
+    width: 80%;
+    height: 600px; /* o tamanho fixo que vc quer para o carousel */
+    object-fit: cover;
+}
+
+.ttl-produtos {
+    text-align: center;
+}
+
+.form-control-custom-width {
+    max-width: 300px; /* ajuste o tamanho */
+}
+
+.form-control-custom-width-2 {
+    max-width: 360px; /* ajuste o tamanho */
+}
+
+/*login*/
+
+.input-pequeno {
+    width: 300px; /* define uma largura padrão */
+    max-width: 100%;
+}
+
+.login-box {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white; /* texto branco */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* sombra para destaque */
+    width: 500px;
+    height: auto;
+}
+
+    .login-box input {
+        background-color: rgba(255, 255, 255, 0.2); /* campo semi-transparente */
+        border: none;
+        color: white;
+        width: 100%; /* faz crescer com a caixa */
+        box-sizing: border-box; /* padding não estoura largura */
+    }
+
+        .login-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7); /* placeholder mais claro */
+        }
+
+    .login-box button {
+        background-color: #007bff; /* botão azul */
+        color: white;
+        border: none;
+        width: 100%; /* faz crescer com a caixa */
+        box-sizing: border-box; /* padding não estoura largura */
+    }
+
+        .login-box button:hover {
+            background-color: #0056b3;
+        }
+
+    /* Checkbox circular customizada dentro da login-box */
+    .login-box .form-check-input {
+        appearance: none; /* remove estilo padrão do navegador */
+        width: 15px; /* largura do círculo */
+        height: 15px; /* altura do círculo */
+        border: 2px solid white; /* borda visível */
+        border-radius: 0; /* deixa circular */
+        background-color: transparent;
+        cursor: pointer;
+        position: relative;
+        margin-right: 8px; /* espaço entre checkbox e label */
+    }
+    /*fim do login*/
+
+#footer-dark footer {
+    background-color: rgba(0, 0, 0, 0.7); /* fundo preto semi-transparente */
+    color: #fff; /* texto branco */
+}
+
+    #footer-dark footer a.nav-link {
+        color: #fff; /* links brancos */
+        transition: color 0.3s;
+    }
+
+        #footer-dark footer a.nav-link:hover {
+            color: #ddd; /* hover cinza claro */
+        }
+
+    #footer-dark footer .border-bottom {
+        border-color: #444; /* borda sutil */
+    }
+
+
+.produto-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px;
+    margin: 10px;
+    max-width: 250px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.produto-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.produto-nome {
+    font-size: 1.2em;
+    margin: 8px 0 6px;
+}
+
+.produto-descricao {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    min-height: 40px;
+}
+
+.produto-preco {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #007BFF;
+}
+
+/* Cards */
+.cart-item {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap:12px;
+ padding:12px;
+ background: #fff;
+}
+.cart-item .col-2,
+.cart-item .col-4,
+.cart-item .col-3,
+.cart-item .col-2,
+.cart-item .col-1 {
+ padding:6px;
+}
+.cart-item img {
+ width:100%;
+ max-width:120px;
+ height: auto;
+ object-fit: cover;
+ border-radius:6px;
+ box-shadow:01px4px rgba(0,0,0,0.08);
+}
+.product-name {
+ margin:006px;
+ font-weight:600;
+ font-size:1rem;
+}
+.product-price {
+ color: #198754; /* bootstrap success */
+ font-weight:700;
+ margin:0;
+}
+.quantity-controls {
+ display: flex;
+ align-items: center;
+ gap:8px;
+}
+.quantity-controls .btn {
+ width:36px;
+ height:36px;
+ padding:0;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+}
+.cart-subtotal {
+ font-weight:600;
+}
+
+.cart-item h5, .cart-item p { margin:0; }
+
+@media (max-width:576px) {
+ .cart-item img { max-width:80px; }
+ .cart-item { gap:8px; }
+
+ .cart-item .col-2 { order:1; width:40%; }
+ .cart-item .col-3 { order:2; width:100%; }
+ .cart-item .col-4 { order:3; width:100%; }
+ .cart-item .col-2:nth-last-of-type(2) { order:4; width:60%; }
+ .cart-item .col-1 { order:5; width:100%; margin-top:8px; }
+}
+
+
+.btn-danger.fw-bold {
+ padding:6px8px;
+ font-size:0.85rem;
+}
+
+
+.card-body .btn {
+ min-width:120px;
+ padding:8px12px;
+ border-radius:6px;
+ font-weight:700;
+ box-shadow:02px6px rgba(0,0,0,0.08);
+}
+
+
+.card-body .btn + .btn {
+ margin-left:10px;
+}
+
+.card-body .d-flex {
+ gap:8px;
+}
+
+
+@media (max-width:576px) {
+ .card-body .d-flex { flex-direction: column; align-items: stretch; }
+ .card-body .btn { width:100%; margin-left:0 !important; }
+}
+
+
+.card .btn-primary {
+ background: linear-gradient(180deg,#0d6efd,#0b5ed7);
+ border-color: #0b5ed7;
+}
+.card .btn-success {
+ background: linear-gradient(180deg,#198754,#157347);
+ border-color: #157347;
+}
+
+
+.card-body .btn:hover {
+ transform: translateY(-2px);
+ transition: transform0.12s ease-in-out;
+}
+
+
+/*Configuração Carousel*/
+#carouselExampleCaptions {
+    max-width: 70%;
+    margin: 30px auto;
+    border-left: 15px solid #b61414;
+    border-right: 15px solid #b61414;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+}
+
+.carousel-item img {
+    height: 500px !important;
+    object-fit: cover;
+    width: 100%;
+}
+
+.carousel-caption {
+    bottom: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-bottom: 1rem;
+}
+/*Fim da Configuração Carousel*/
