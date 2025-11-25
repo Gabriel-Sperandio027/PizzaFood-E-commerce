@@ -8,7 +8,7 @@
 # 🍕 **Pizza Food – Sistema de Delivery**  
 ### Plataforma de E-commerce e Painel Administrativo para Pizzarias
 
-Projeto acadêmico desenvolvido para a disciplina de **Desenvolvimento Web (TADS)**. O sistema consiste em uma aplicação completa para gestão de vendas online de uma pizzaria, contemplando tanto a área pública (cliente) quanto um painel administrativo para gerenciamento interno do negócio.
+Projeto acadêmico desenvolvido para a disciplina de **Programação para internet 2 (TADS)**. O sistema consiste em uma aplicação completa para gestão de vendas online de uma pizzaria, contemplando tanto a área pública (cliente) quanto um painel administrativo para gerenciamento interno do negócio.
 
 ---
 
@@ -85,6 +85,11 @@ O projeto segue uma organização voltada para fácil manutenção e escalabilid
 
 ---
 
+## 🗄️ **Criação do Banco de Dados**
+
+Para executar o sistema, é necessário criar o banco de dados no **SQL Server**. Inicialmente, crie um banco com o nome `pizzafood`. Em seguida, utilize os scripts fornecidos na pasta `DDL.SQL` do projeto para criar as tabelas e os relacionamentos, e na pasta `Triggers.sql` tem uma Trigger para controle de disponibilidade de estoque e para inserir dados usar os insert's que se encontra na pasta `DML.SQL`. 
+
 <p align="center">
   <strong>Desenvolvido por aluno do 4º Período de TADS.</strong>
 </p>
+
