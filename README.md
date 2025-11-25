@@ -97,7 +97,8 @@ Certifique-se de executar os scripts na ordem indicada para garantir a integrida
 
 
 <p align="center">
-  <strong>Desenvolvido por aluno do 4º Período de TADS.</strong>
+  <strong>Desenvolvido por Gabriel Cordeiro Sathler Sperandio, João Pedro Vieira Beloni e Lucas Tavares Rubim alunos do 4º Período de (Tecnologia em Análise e Desenvolvimento de Sistemas -TADS).</strong>
 </p>
+
 
 
